@@ -10,6 +10,8 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 
+CONFIG_DIR="$HOME/.config/zsh"
+
 # ─────────────────────────────────────────────────────────────
 # Completion Settings
 # ─────────────────────────────────────────────────────────────
@@ -72,16 +74,16 @@ rgi() {
 # PATH & Scripts
 # ─────────────────────────────────────────────────────────────
 
-export PATH="$HOME/.zsh/scripts:$PATH"
+export PATH="$CONFIG_DIR/.zsh/scripts:$PATH"
 function ls() {
-  ~/.zsh/scripts/eza-wrapper.sh "$@"
+  $CONFIG_DIR/.zsh/scripts/eza-wrapper.sh "$@"
 }
 
 # ─────────────────────────────────────────────────────────────
 # Prompt (Pure)
 # ─────────────────────────────────────────────────────────────
 
-fpath+=($HOME/.zsh/pure)
+fpath+=($CONFIG_DIR/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
