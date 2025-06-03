@@ -27,6 +27,16 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # ─────────────────────────────────────────────────────────────
+# Keybinds
+# ─────────────────────────────────────────────────────────────
+
+bindkey -e
+bindkey '^[[H' beginning-of-line     # xterm-style Home
+bindkey '^[[F' end-of-line           # xterm-style End
+bindkey '^[OH' beginning-of-line     # Kitty/VTE alternative Home
+bindkey '^[OF' end-of-line           # Kitty/VTE alternative End
+
+# ─────────────────────────────────────────────────────────────
 # Plugin Configuration
 # ─────────────────────────────────────────────────────────────
 
@@ -87,27 +97,27 @@ fpath+=($CONFIG_DIR/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
-bindkey -v
-
-# Show -- INSERT -- or -- NORMAL -- in the right prompt
-function zle-keymap-select {
-  if [[ $KEYMAP == vicmd ]]; then
-    # NORMAL mode: block cursor
-    echo -ne '\e[2 q'
-    RPROMPT="%F{yellow}[NORMAL]%f"
-  else
-    # INSERT mode: line cursor
-    echo -ne '\e[6 q'
-    RPROMPT=""
-  fi
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-init {
-  zle-keymap-select
-}
-zle -N zle-line-init
+# bindkey -v
+#
+# # Show -- INSERT -- or -- NORMAL -- in the right prompt
+# function zle-keymap-select {
+#   if [[ $KEYMAP == vicmd ]]; then
+#     # NORMAL mode: block cursor
+#     echo -ne '\e[2 q'
+#     RPROMPT="%F{yellow}[NORMAL]%f"
+#   else
+#     # INSERT mode: line cursor
+#     echo -ne '\e[6 q'
+#     RPROMPT=""
+#   fi
+#   zle reset-prompt
+# }
+# zle -N zle-keymap-select
+#
+# function zle-line-init {
+#   zle-keymap-select
+# }
+# zle -N zle-line-init
 
 
 # ─────────────────────────────────────────────────────────────
